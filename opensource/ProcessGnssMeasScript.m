@@ -8,7 +8,7 @@ prFileName = 'pseudoranges_log_2016_06_30_21_26_07.txt'; %with duty cycling, no 
 % 1) copy everything from GitHub google/gps-measurement-tools/ to 
 %    a local directory on your machine
 % 2) change 'dirName = ...' to match the local directory you are using:
-dirName = '~/Documents/MATLAB/gpstools/opensource/demoFiles';
+dirName = 'F:\sync\reaserch\gps-measurement-tools\opensource\demoFiles';
 % 3) run ProcessGnssMeasScript.m script file 
 param.llaTrueDegDegM = [];
 
@@ -34,7 +34,7 @@ if isempty(gnssRaw), return, end
 %% Get online ephemeris from Nasa ftp, first compute UTC Time from gnssRaw:
 fctSeconds = 1e-3*double(gnssRaw.allRxMillis(end));
 utcTime = Gps2Utc([],fctSeconds);
-allGpsEph = GetNasaHourlyEphemeris(utcTime,dirName);
+allGpsEph = GetNasaHourlyEphemeris(utcTime,dirName);   %得到最后历元所处当天的星历
 if isempty(allGpsEph), return, end
 
 %% process raw measurements, compute pseudoranges:

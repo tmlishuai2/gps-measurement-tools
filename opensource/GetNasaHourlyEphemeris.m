@@ -110,9 +110,9 @@ if ~bGotGpsEph
     %Now we have the zipped file from nasa. Unzip it:
     unzipCommand='uncompress';%edit if your platform uses something different 
     if any(strfind(computer,'PCWIN'))
-        unzipCommand='gunzip';
+        unzipCommand='7z';
     end
-    s = sprintf('%s "%s"',unzipCommand,zF{1}); %string for system command
+    s = sprintf('%s x "%s" -y -o"%s"',unzipCommand,zF{1},dirName); %string for system command
     [sysFlag,result] = system(s);
     if any(sysFlag)
         fprintf('\nError in GetNasaHourlyEphemeris.m\n')
